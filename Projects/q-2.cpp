@@ -3,27 +3,31 @@
 using namespace std;
 
 class Train {
-private:
-    int trainNumber;
-    char trainName[70];
-    char source[70];
-    char departure[70];
-    char destination[70];
-    char trainTime[50];
+    private:
+        int trainNumber;
+        char trainName[70];
+        char source[70];
+        char departure[70];
+        char destination[70];
+        char trainTime[50];
 
-    static int trainCount;
+        static int trainCount;
 
-public:
-    Train() {
-        trainNumber = 0;
-        strcpy(trainName, "");
-        strcpy(source, "");
-        strcpy(departure, "");
-        strcpy(destination, "");
-        strcpy(trainTime, "");
-        trainCount++;
+    public:
+        Train() 
+        {
+            trainNumber = 0;
+            strcpy(trainName, "");
+            strcpy(source, "");
+            strcpy(departure, "");
+            strcpy(destination, "");
+            strcpy(trainTime, "");
+            trainCount++;
+
     }
-    Train(int num, const char name[], const char src[], const char depart[], const char dest[], const char time[]) {
+
+    Train(int num, const char name[], const char src[], const char depart[], const char dest[], const char time[]) 
+    {
         trainNumber = num;
         strcpy(trainName, name);
         strcpy(source, src);
@@ -31,14 +35,21 @@ public:
         strcpy(destination, dest);
         strcpy(trainTime, time);
         trainCount++;
+
     }
-    ~Train() {
+
+    ~Train() 
+    {
         trainCount--;
     }
-    int getTrainNumber() {
+
+    int getTrainNumber() 
+    {
         return trainNumber;
     }
-    void inputTrainDetails() {
+
+    void inputTrainDetails() 
+    {
         cout << "Enter Train Number: ";
         cin >> trainNumber;
         cin.ignore();
@@ -57,8 +68,11 @@ public:
 
         cout << "Enter Train Time: ";
         cin.getline(trainTime, 50);
+
     }
-    void displayTrainDetails() {
+
+    void displayTrainDetails() 
+    {
         cout << "Train Number: " << trainNumber << endl;
         cout << "Train Name: " << trainName << endl;
         cout << "Source: " << source << endl;
@@ -66,8 +80,11 @@ public:
         cout << "Destination: " << destination << endl;
         cout << "Train Time: " << trainTime << endl;
         cout << "-------------------------" << endl;
+
     }
-    static int getTrainCount() {
+
+    static int getTrainCount() 
+    {
         return trainCount;
     }
 };
@@ -80,7 +97,8 @@ private:
     int totalTrains;
 
 public:
-    RailwaySystem() {
+    RailwaySystem() 
+    {
         totalTrains = 0;
         trains[totalTrains++] = Train(101, "Vande Bharat Express", "Surat","Rajasthan", "Punjab", "9 PM");
         trains[totalTrains++] = Train(102, "Rajdhani Express", "Chennai","Banglore", "Mumbai", "4 PM");
@@ -88,22 +106,28 @@ public:
         trains[totalTrains++] = Train(104, "Tejas Express", "Ranchi","Delhi", "Dharmshala", "10 AM");
     }
 
-    void addTrain() {
+    void addTrain() 
+    {
         trains[totalTrains].inputTrainDetails();
         totalTrains++;
         cout << "Info Added Successfully!\n";
     }
 
-    void displayAllTrains() {
-        for (int i = 0; i < totalTrains; i++) {
+    void displayAllTrains() 
+    {
+        for (int i = 0; i < totalTrains; i++) 
+        {
             cout << "\nTrain " << i + 1 << " Details:\n";
             trains[i].displayTrainDetails();
         }
     }
 
-    void searchTrainByNumber(int num) {
-        for (int i = 0; i < totalTrains; i++) {
-            if (trains[i].getTrainNumber() == num) {
+    void searchTrainByNumber(int num) 
+    {
+        for (int i = 0; i < totalTrains; i++) 
+        {
+            if (trains[i].getTrainNumber() == num) 
+            {
                 trains[i].displayTrainDetails();
                 return;
             }
@@ -112,11 +136,13 @@ public:
     }
 };
 
-int main() {
+int main() 
+{
     RailwaySystem system;
     int choice, number;
 
-    do {
+    do 
+    {
         cout << "--- Railway Reservation System Info ---" << endl;
         cout << "1. Add Records of New Train" << endl;
         cout << "2. Display All Train Records" << endl;
@@ -125,7 +151,8 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch (choice) {
+        switch (choice) 
+        {
         case 1:
             system.addTrain();
             break;
@@ -148,7 +175,8 @@ int main() {
             cout << "Incorrect Choice" << endl;
         }
 
-    } while (choice != 0);
+    } 
+    while (choice != 0);
 
     return 0;
 }
